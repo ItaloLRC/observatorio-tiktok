@@ -1,0 +1,1 @@
+chrome.runtime.sendMessage({type:'RTR_POPUP'}).then(reply=>{const s=reply.data||{};document.querySelector('#status').textContent=s.active?'Coletando @'+s.active.handle+' · '+s.active.phase:s.origin?'Painel conectado. Aguardando canal.':'Execute npm start e abra o painel local.';if(s.origin)document.querySelector('#panel').href=s.origin;});

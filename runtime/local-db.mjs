@@ -1,0 +1,4 @@
+import {migrate} from './migrations.mjs';
+import {DatabaseSync} from 'node:sqlite';
+export function d1(db){return {prepare(query){let args=[];const statement={bind(...v){args=v;return statement;},async run(){const r=db.prepare(query).run(...args);return {success:true,meta:{changes:Number(r.changes)}};},async all(){return {success:true,results:db.prepare(query).all(...args)};},async first(column){const r=db.prepare(query).get(...args);return r?(column?r[column]:r):null;}};return statement;},async batch(statements){db.exec('BEGIN IMMEDIATE');try{const results=[];for(const s of statements)results.push(await s.run());db.exec('COMMIT');return results;}catch(e){db.exec('ROLLBACK');throw e;}}};}
+export function openDatabase(file,sql){const db=new DatabaseSync(file);db.exec('PRAGMA foreign_keys=ON');if(sql&&!db.prepare("SELECT name FROM sqlite_master WHERE name='channels'").get())db.exec(sql.replaceAll('--> statement-breakpoint',''));migrate(db);return {db,DB:d1(db)};}

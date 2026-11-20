@@ -1,0 +1,16 @@
+/.local/
+/.backup-*/
+/analysis/resultados/
+node_modules/
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.py[cod]
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.parquet
+.env
+.env.*
+npm-debug.log*

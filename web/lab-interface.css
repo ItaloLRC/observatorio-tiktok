@@ -1,0 +1,48 @@
+/* Common scale for analysis, exports, data management and SQL. */
+:root { color-scheme: light; }
+body { font-size: 16px; line-height: 1.65; }
+[hidden] { display: none !important; }
+main, .split > *, .layout > * { min-width: 0; }
+h1 { font-size: clamp(30px, 3vw, 40px); line-height: 1.25; }
+h2 { font-size: 24px; line-height: 1.35; }
+h3 { font-size: 18px; }
+p { max-width: 80ch; }
+.muted { color: #52675b; }
+.eyebrow { font-size: 12px; letter-spacing: .1em; }
+nav { gap: 8px; }
+nav a, .tools > a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; }
+header { align-items: start; flex-wrap: wrap; }
+header > div { flex: 1 1 280px; }
+header > nav { flex: 1 1 450px; justify-content: end; }
+button, select, input:not([type=checkbox]) { min-height: 46px; font-size: 16px; max-width: 100%; border-color: #8da796; }
+input[type=checkbox] { width: 20px; height: 20px; flex-shrink: 0; accent-color: #356f57; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible, [tabindex]:focus-visible { outline: 3px solid #356f57; outline-offset: 3px; }
+.checks label { min-height: 46px; font-size: 15px; }
+.filters label { font-size: 15px; min-width: 0; flex: 1 1 180px; }
+.filters input, .filters select { width: 100%; min-width: 0; }
+.filters .views-filter { max-width: 220px; }
+.filter-help { font-size: 14px; color: #52675b; }
+.filter-error { color: #a33e30; }
+.metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.metric span { font-size: 14px; color: #4d6555; }
+.metric strong { font-size: 30px; overflow-wrap: anywhere; }
+table { font-size: 15px; }
+td, th { padding: 14px 16px; font-variant-numeric: tabular-nums; }
+th { font-size: 14px; color: #425a4b; }
+svg text { font-size: 14px; fill: #4a6252; }
+#plot { overflow-x: auto; }
+#plot svg { min-width: 620px; }
+.matrix small { font-size: 12px; opacity: 1; }
+.matrix button { font-size: 16px; min-width: 100px; height: 72px; }
+.entity ul { font-size: 14px; line-height: 1.8; }
+.entity small { opacity: 1; }
+.definition code { font-size: 14px; }
+pre, code, .path { font-size: 14px; }
+pre { max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; }
+.card { padding: 28px; }
+.scroll, .diagram-scroll { overscroll-behavior: contain; }
+.error { color: #96382b; }
+@media (max-width: 1100px) { .split { grid-template-columns: 1fr; } header > nav { justify-content: start; } }
+@media (max-width: 850px) { main { padding: 24px 16px; } .card { padding: 22px 18px; } .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } header > div, header > nav { flex-basis: auto; } }
+@media (max-width: 480px) { .metrics { grid-template-columns: 1fr; } .filters label { flex-basis: 100%; max-width: none; } nav { gap: 8px; } nav a { font-size: 14px; } .tools { gap: 12px; } .tools > * { max-width: 100%; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }

@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Observatório TikTok · Coletor",
+  "version": "3.1.0",
+  "minimum_chrome_version": "120",
+  "description": "Coleta vídeos públicos do TikTok usando as abas e a sessão deste navegador, salvando no Observatório TikTok.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://www.tiktok.com/*",
+    "http://127.0.0.1/*",
+    "http://localhost/*"
+  ],
+  "background": {
+    "service_worker": "background.mjs",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://127.0.0.1/*",
+        "http://localhost/*"
+      ],
+      "js": [
+        "bridge.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.tiktok.com/*"
+      ],
+      "js": [
+        "network.js"
+      ],
+      "world": "MAIN",
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://www.tiktok.com/*"
+      ],
+      "js": [
+        "core.js",
+        "source.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_title": "Observatório TikTok · Coletor",
+    "default_popup": "popup.html"
+  }
+}
